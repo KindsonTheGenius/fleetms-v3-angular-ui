@@ -1,0 +1,15 @@
+Step 1: Download Latest Release of Admin LTE
+
+Step 2: Add Admin LTE required file to Asset Folder
+From the Admin LTE Code copy the “dist” and “plugins” folder to assets folder.
+
+Step 3: Import the Admin LTE css
+Import the Css files from asset folder to Index.html head section
+
+Step 4: Add the body class attribute from the to the body section
+
+Step 5: Import the Admin LTE javascript
+Import the javascript files from the asset folder to Index.html below the last /body tag
+
+Step 6: Adjust the links to point the the actual location in the assets folder
+
