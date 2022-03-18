@@ -1,0 +1,191 @@
+<br>
+<div class="container">
+  <!-- Button trigger modal -->
+  <div class="border"  style="background-color:white">
+    <button mat-raised-button (click)="openAdd(addDialog)" type="button" class="btn btn-primary ">
+    <i class="fa fa-user"></i>New Country</button>
+  </div>
+
+    <table class="table table-bordered table-striped" style="background-color:white">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Capital</th>
+        <th>Code</th>
+        <th>Nationality</th>
+        <th>Continent</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let country of countries">
+        <td><span>{{country.id}}</span></td>
+        <td><span>{{country.description}}</span></td>
+        <td><span>{{country.capital}}</span></td>
+        <td><span>{{country.code}}</span></td>
+        <td><span>{{country.nationality}}</span></td>
+        <td><span>{{country.continent}}</span></td>
+        <td width="22%">
+          <button (click)="openDetails(detailsDialog, country)" class="btn btn-sm btn-info">
+            <i class="fa fa-search"></i>Details</button>
+          <button (click)="openEdit(editDialog, country)" class="btn btn-sm btn-warning">
+            <i class="fa fa-edit"></i>Edit</button>
+          <button (click)="openDelete(deleteDialog, country)"
+          class="btn btn-sm btn-danger">
+            <i class="fa fa-remove"></i>Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+
+<!-- Add Dialog template -->
+<ng-template #addDialog>
+    <h2 matDialogTitle>New Country Details</h2>
+    <mat-divider></mat-divider>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+        <label for="firstname">Description</label>
+        <div class="input-group">
+          <input id="description" name="description" class="form-control" ngModel>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Capital</label>
+        <div class="input-group">
+          <input id="capital" name="capital" class="form-control" ngModel>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firstname">Code</label>
+        <div class="input-group">
+          <input id="code" name="code" class="form-control" ngModel>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Nationality</label>
+        <div class="input-group">
+          <input id="nationality" name="nationality" class="form-control" ngModel>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Continent</label>
+        <div class="input-group">
+          <input id="continent" name="continent" class="form-control" ngModel>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-dialog-actions align="end">
+        <button type="submit" class="btn btn-primary btn-btn-outline" mat-button color="primary">Save</button>
+      </mat-dialog-actions>
+      </form>
+</ng-template>
+
+<!-- Details Dialog template -->
+<ng-template #detailsDialog>
+    <h2 matDialogTitle>Selected Country Details</h2>
+    <mat-divider></mat-divider>
+      <form >
+      <div class="form-group">
+        <label for="dcr">Description</label>
+        <div class="input-group">
+          <input id="dcr" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Capital</label>
+        <div class="input-group">
+          <input id="cpl"class="form-control" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="firstname">Code</label>
+        <div class="input-group">
+          <input id="cod" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Nationality</label>
+        <div class="input-group">
+          <input id="nlt" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Continent</label>
+        <div class="input-group" >
+          <input id="cnt" class="form-control" readonly>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-dialog-actions align="end">
+        <button type="submit" mat-button matDialogClose color="primary">Close</button>
+      </mat-dialog-actions>
+      </form>
+</ng-template>
+
+  <!-- Edit Dialog template -->
+<ng-template #editDialog>
+  <h2 matDialogTitle>Editing Country Record</h2>
+  <mat-divider></mat-divider>
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group"> 
+        <label for="id">Id</label> 
+        <div class="input-group"> 
+          <input formControlName="id" class="form-control"> 
+        </div> 
+      </div>
+    <div class="form-group">
+      <label for="firstname">Description</label>
+      <div class="input-group">
+        <input formControlName="description" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Capital</label>
+      <div class="input-group">
+        <input formControlName="capital" class="form-control" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname">Code</label>
+      <div class="input-group">
+        <input formControlName="code" class="form-control" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Nationality</label>
+      <div class="input-group">
+        <input formControlName="nationality" class="form-control" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Continent</label>
+      <div class="input-group">
+        <input formControlName="continent" class="form-control" >
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions align="end">
+      <button  (click)="onSave()" class="btn btn-primary btn-btn-outline" mat-button color="primary">Update</button>
+    </mat-dialog-actions>
+    </form>
+</ng-template>
+
+<ng-template #deleteDialog >
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2>Are you sure you want to delete this record.</h2>
+    <div class="border text-center"> 
+      <button (click)="onDelete()" class="btn btn-danger">Yes, Delete!</button> 
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" matDialogClose="" class="btn btn-outline-dark">Cancel</button>
+  </div>
+</ng-template>
